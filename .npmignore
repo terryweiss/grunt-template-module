@@ -1,0 +1,9 @@
+.svn*
+node_modules
+npm-debug.log
+tmp
+.idea*
+.settings*
+.metdata*
+*.tgz
+.project
