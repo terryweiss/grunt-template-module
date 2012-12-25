@@ -178,4 +178,4 @@ options: {
 
 ## Release History
  * 2012-12-24   v0.1.0  Initial release
- * 2012-12-25   v0.1.0  Fixed documentation and clarified names
+ * 2012-12-25   v0.1.1  Fixed documentation and clarified names

@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "lodash": "~1.0.0",
-    "grunt-lib-contrib": ">=0.3.0",
     "underscore": "~1.4.0",
     "ejs": "~0.8.3",
     "grunt-beautify": "~0.1.1"
@@ -52,3 +51,4 @@
     "templates"
   ]
 }
+
