@@ -1,3 +1,4 @@
+'use strict';
 /**
  * @fileOverview This is a grunt task to precompile JST files with the option to
  *               expose the result into module.exports rather than a namespace.
@@ -12,12 +13,17 @@
  * @module tasks\grunt-jst-module
  * @see http://gruntjs.com/
  * @see https://github.com/gruntjs/grunt-contrib-jst
- * @copyright Copyright (c) 2012 Tim Branyen, contributors, Terry Weiss
+ * @copyright Copyright &copy; 2012 Terry Weiss, Tim Branyen, grunt-contrib contributers. All rights reserved.
  * @license MIT.
  */
 
-'use strict';
-
+/**
+ * Figures out what the full namespace declaration looks like when rendered.
+ *
+ * @param {string} ns The namespace specification
+ * @return {Object} And object with two components: <code>namespace</code> - the namespace specification and
+ * <code>declaration</code>: the component declarations to make sure the namespace is valid at runtime.
+ */
 var getNamespaceDeclaration = function (ns) {
     var output = [];
     var curPath = 'this';
@@ -36,7 +42,10 @@ var getNamespaceDeclaration = function (ns) {
         declaration: output.join('\n')
     };
 };
-
+/**
+ * The task itself
+ * @param {Grunt} grunt The grunt object
+ */
 module.exports = function (grunt) {
 
     // filename conversion for templates
@@ -67,8 +76,6 @@ module.exports = function (grunt) {
 
         var options = sys.extend({}, defaultOptions, this.data.options);
         var templateProvider = require(options.provider);
-
-        var helpers = require('grunt-lib-contrib').init(grunt);
 
         grunt.verbose.writeflags(options, 'Options');
 

@@ -4,8 +4,8 @@
 
 This is an awful lot like the existing [grunt-contrib-jst](https://github.com/gruntjs/grunt-contrib-jst) grunt task. But it has a few
 differences. One is that it supports <code>underscore</code>, <code>lodash</code> and <code>ejs</code> template providers. The real
-key feature is that it allows you to compile these templates into a module that exposes each compiled template from an <code>exports</code> property.
-What this means is that if you provide the following configuration:
+key feature is that it allows you to compile these templates into a module that exposes each compiled template from an <code>exports</code>
+property. What this means is that if you provide the following configuration:
 
     compile_module: {
         files: {
@@ -20,9 +20,9 @@ You would end up with an entry in <code>module_jst.js</code> that looks like:
 
     exports["tmp/module_jst.js"] = function(obj){...
 
-I know. You're wondering why do such a thing? Doesn't the <code>contrib-jst</code> offer an AMD wrapper? Yes, it does, but that doesn't help if you want
-to get at the template from the server. As well, if you use [browserify](https://github.com/substack/node-browserify), this will play much better with
-the compiled browserified (is that word?) output.
+I know. You're wondering why do such a thing? Doesn't <code>contrib-jst</code> offer an AMD wrapper? Yes, it does, but it is a very noisy way
+to get at it on the server. As well, if you use [browserify](https://github.com/substack/node-browserify), this will play much better with
+the compiled browserified (is that a word?) output.
 
 So there you have it. Browserify and server happiness for underscore/lodash and EJS templates. And backward compatibility with <code>contrib-jst</code>.
 
@@ -34,7 +34,7 @@ now uses [node-beautify](https://github.com/fshost/node-beautify).
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
 ```shell
-npm install grunt-template-module --save-dev
+npm install grunt-template-module
 ```
 
 [grunt]: http://gruntjs.com/
@@ -42,11 +42,26 @@ npm install grunt-template-module --save-dev
 
 
 ## template-module task
-_Run this task with the `grunt template-module` command._
+Run this task with `grunt template-module` at the command line.
 
 _This task is a [multi task][] so any targets, files and options should be specified according to the [multi task][] documentation._
 [multi task]: https://github.com/gruntjs/grunt/wiki/Configuring-tasks
 
+### Usage
+
+```js
+template-module: {
+  compile: {
+    options: {
+      module: true.
+      provider: 'lodash'
+    },
+    files: {
+      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
+    }
+  }
+}
+```
 
 ### Options
 
@@ -61,6 +76,38 @@ Type 'String'
 Default: underscore
 
 The name of the template engine to use. Allowable values are <code>*underscore*</code> <code>*lodash*</code> and <code>*ejs*</code>
+
+
+
+#### prettify
+Type: ```boolean```
+Default: false
+
+When doing a quick once-over of your compiled template file, it's nice to see
+an easy-to-read format. This will accomplish
+that.
+
+```javascript
+options: {
+  prettify: true
+}
+```
+
+#### prettifyOptions
+Type: ```object```
+
+When you set prettify to `true`, you can pass options to the [beautify module](https://github.com/fshost/node-beautify) in this object.
+
+```javascript
+options: {
+  prettify: true,
+  prettifyOptions:{
+      indentSize: 4,
+      indentChar: '\t',
+      maxPreserveNewlines: 1
+  }
+}
+```
 
 #### namespace
 Type: `String`
@@ -103,20 +150,6 @@ template-module: {
 }
 ```
 
-#### prettify
-Type: ```boolean```
-Default: false
-
-When doing a quick once-over of your compiled template file, it's nice to see
-an easy-to-read format. This will accomplish
-that.
-
-```javascript
-options: {
-  prettify: true
-}
-```
-
 #### amdWrapper
 Type: ```boolean```
 Default: false
@@ -140,23 +173,9 @@ options: {
 
 * This is not used when module is set to true.*
 
-### Usage Examples
 
-```js
-template-module: {
-  compile: {
-    options: {
-      templateSettings: {
-        interpolate : /\{\{(.+?)\}\}/g
-      }
-    },
-    files: {
-      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
-    }
-  }
-}
-```
 
 
 ## Release History
  * 2012-12-24   v0.1.0  Initial release
+ * 2012-12-25   v0.1.0  Fixed documentation and clarified names

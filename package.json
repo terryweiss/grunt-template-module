@@ -1,49 +1,46 @@
 {
-	"name" : "grunt-template-module",
-	"description" : "Precompile Underscore templates to file with option to expose templates from a module.",
-	"version" : "0.1.0",
-	"homepage" : "https://github.com/terryweiss/grunt-template-module",
-	"contributors" : [
-		{
-			"name" : "Grunt Team",
-			"url" : "http://gruntjs.com/"
-		},
-		{
-			"name" : "Terry Weiss",
-			"url" : "http://terryweiss.net"
-		}
-	],
-	"repository" : {
-		"type" : "git",
-		"url" : "git://github.com/terryweiss/grunt-template-module.git"
-	},
-	"bugs" : {
-		"url" : "https://github.com/terryweiss/grunt-template-module/issues"
-	},
-	"licenses" : [
-		{
-			"type" : "MIT",
-			"url" : "https://github.com/terryweiss/grunt-template-module/blob/master/LICENSE-MIT"
-		}
-	],
-	"main" : "grunt.js",
-	"engines" : {
-		"node" : ">= 0.8.0"
-	},
-	"scripts" : {
-		"test" : "grunt test"
-	},
-	"dependencies" : {
-		"lodash" : "~1.0.0",
-		"grunt-lib-contrib" : "~0.3.0",
-		"underscore" : "~1.4.0",
-		"ejs" : "~0.8.3",
-		"grunt-beautify" : "~0.1.1"
-	},
-	"devDependencies" : {
-		"grunt" : "~0.3.0",
-		"grunt-contrib-nodeunit" : "~0.1.0"
+    "name": "grunt-template-module",
+    "description": "Precompile templates to a file with option to expose templates as a node/commonjs module.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/terryweiss/grunt-template-module",
+    "contributors": [
 
-	},
-	"keywords" : ["gruntplugin", "jst", "ejs", "lodash", "underscore", "templates"]
+    {
+        "name": "Terry Weiss",
+        "url": "http://terryweiss.net"
+    },
+    {
+        "name": "Grunt Team",
+        "url": "http://gruntjs.com/"
+    }],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/terryweiss/grunt-template-module.git"
+    },
+    "bugs": {
+        "url": "https://github.com/terryweiss/grunt-template-module/issues"
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/terryweiss/grunt-template-module/blob/master/LICENSE-MIT"
+    }],
+    "engines": {
+        "node": ">=0.8.0"
+    },
+    "scripts": {
+        "test": "grunt test"
+    },
+    "dependencies": {
+        "lodash": "~1.0.0",
+        "grunt-lib-contrib": ">=0.3.0",
+        "underscore": "~1.4.0",
+        "ejs": "~0.8.3",
+        "grunt-beautify": "~0.1.1"
+    },
+    "devDependencies": {
+        "grunt": ">=0.3.0",
+        "grunt-contrib-nodeunit": "~0.1.0"
+
+    },
+    "keywords": ["gruntplugin", "jst", "ejs", "lodash", "underscore", "templates"]
 }

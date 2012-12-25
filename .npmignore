@@ -7,3 +7,6 @@ tmp
 .metdata*
 *.tgz
 .project
+.git*
+.gitignore
+.gitattributes

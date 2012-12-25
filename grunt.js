@@ -48,7 +48,7 @@ module.exports = function (grunt) {
 
         //
         // Configuration to be run (and then tested).
-        "jst-module": {
+        "template-module": {
             compile: {
                 files: {
                     "tmp/jst.js": ["test/fixtures/template.html"]
@@ -126,7 +126,7 @@ module.exports = function (grunt) {
         //
         // Unit tests.
         nodeunit: {
-            tests: ['test/jst_test.js']
+            tests: ['test/template-test.js']
         }
     });
 
@@ -138,9 +138,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-beautify');
 
 
-    grunt.registerTask('test', ['jst-module', 'nodeunit']);
+    grunt.registerTask('test', ['template-module', 'nodeunit']);
+    grunt.registerTask("publish", ["lint", "beautify", "test"]);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['lint']);
+    grunt.registerTask('default', ['test']);
+
 
 };
