@@ -36,7 +36,8 @@
     "lodash": "~1.0.0",
     "underscore": "~1.4.0",
     "ejs": "~0.8.3",
-    "grunt-beautify": "~0.1.1"
+    "grunt-beautify": "~0.1.1" ,
+	"node-beautify" : "~0.0.2"
   },
   "devDependencies": {
     "grunt": ">=0.3.0",
