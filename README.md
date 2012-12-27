@@ -7,7 +7,7 @@ differences. One is that it supports <code>underscore</code>, <code>lodash</code
 key feature is that it allows you to compile these templates into a module that exposes each compiled template from an <code>exports</code>
 property. What this means is that if you provide the following configuration:
 
-    compile_module: {
+    template-module: {
         files: {
             "tmp/module_jst.js": ["test/fixtures/template.html"]
         },
