@@ -1,7 +1,7 @@
 {
   "name": "grunt-template-module",
   "description": "Precompile templates to a file with option to expose templates as a node/commonjs module.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/terryweiss/grunt-template-module",
   "contributors": [
     {
@@ -36,8 +36,8 @@
     "lodash": "~1.0.0",
     "underscore": "~1.4.0",
     "ejs": "~0.8.3",
-    "grunt-beautify": "~0.1.1" ,
-	"node-beautify" : "~0.0.2"
+    "grunt-beautify": "~0.1.1",
+    "node-beautify": "~0.0.2"
   },
   "devDependencies": {
     "grunt": ">=0.3.0",
@@ -52,4 +52,3 @@
     "templates"
   ]
 }
-
