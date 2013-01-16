@@ -8,12 +8,14 @@ key feature is that it allows you to compile these templates into a module that 
 property. What this means is that if you provide the following configuration:
 
     template-module: {
-        files: {
-            "tmp/module_jst.js": ["test/fixtures/template.html"]
-        },
-        options: {
-            module: true
-        }
+        myTemplates:{
+	        files: {
+	            "tmp/module_jst.js": ["test/fixtures/template.html"]
+	        }
+	        options: {
+	            module: true
+	        }
+	    }
     }
 
 You would end up with an entry in <code>module_jst.js</code> that looks like:
@@ -53,7 +55,7 @@ _This task is a [multi task][] so any targets, files and options should be speci
 template-module: {
   compile: {
     options: {
-      module: true.
+      module: true,
       provider: 'lodash'
     },
     files: {
