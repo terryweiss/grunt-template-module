@@ -71,6 +71,7 @@ module.exports = function ( grunt ) {
 			processName : function ( name ) {
 				return name;
 			},
+			useStrict: true,
 			prettify : false,
 			prettifyOptions : {
 				indentSize : 2
@@ -134,8 +135,12 @@ module.exports = function ( grunt ) {
 				}
 
 				if ( options.lintExpr ) {
-					var lintlines = sys.map( options.lintExpr, function ( v, k ) {return k + " " + v;} );
+					var lintlines = sys.map( options.lintExpr, function ( v, k ) {return k + ", " + v;} );
 					output.push( "\n/*jshint " + lintlines.join( " " ) + "  */" );
+				}
+
+				if (options.useStrict ) {
+					output.unshift( '"use strict;"\n' );
 				}
 
 				var contents = output.join( "\n" );
