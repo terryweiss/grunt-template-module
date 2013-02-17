@@ -13,12 +13,10 @@ module.exports = function ( grunt ) {
 	// Project configuration.
 	grunt.initConfig( {
 		beautify : {
-			tests : '<config:nodeunit.tests>',
+			tests : 'test/template-test.js',
 			files : ['package.json', 'grunt.js', 'tasks/*.js']
 		},
-		lint : {
-			all : ['grunt.js', 'tasks/**.js', '<%= nodeunit.tests %>']
-		},
+
 		jshint : {
 			options : {
 				curly : true,
@@ -35,7 +33,9 @@ module.exports = function ( grunt ) {
 				es5 : true,
 				strict : false
 			},
-			globals : {}
+
+			all : ['grunt.js', 'tasks/**.js', 'test/template-test.js']
+
 		},
 		beautifier : {
 			options : {
@@ -143,10 +143,11 @@ module.exports = function ( grunt ) {
 
 	// These plugins provide necessary tasks.
 	grunt.loadNpmTasks( 'grunt-contrib-nodeunit' );
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-beautify' );
 
 	grunt.registerTask( 'test', ['template-module', 'nodeunit'] );
-	grunt.registerTask( "publish", ["lint", "beautify", "test"] );
+	grunt.registerTask( "publish", ["jshint:all", /*"beautify",*/ "test"] );
 
 	// By default, lint and run all tests.
 	grunt.registerTask( 'default', ['test'] );
