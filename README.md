@@ -152,6 +152,31 @@ template-module: {
 }
 ```
 
+#### lintExpr
+Type: ```Object```
+Default: null
+
+If you want to add a comment for lint or hint declarations, you can use this setting to declare the directives.
+
+```js
+template-module: {
+  compile: {
+    options: {
+     lintExpr : {
+        unused : false,
+        asi : true,
+        expr : true
+     },
+    },
+    files: {
+      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
+    }
+  }
+}
+```
+
+which would produce `/*jshint unused:false, asi:true, expr:true*/` and add it to the bottom of the file.
+
 #### amdWrapper
 Type: ```boolean```
 Default: false

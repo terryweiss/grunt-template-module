@@ -64,21 +64,22 @@ module.exports = function ( grunt ) {
 				compileDebug : true
 			},
 			lintExpr : {
-				unused : false, asi : true, expr : true
+//				unused : false, asi : true, expr : true
 			},
 			module : true,
 			provider : "underscore",
 			processName : function ( name ) {
 				return name;
 			},
-			useStrict: true,
+			useStrict : false,
 			prettify : false,
 			prettifyOptions : {
 				indentSize : 2
 			}
 		};
 
-		var options = sys.extend( {}, defaultOptions, this.data.options );
+
+		var options = sys.extend( {}, defaultOptions, this.options() );
 		var templateProvider = require( options.provider );
 
 		grunt.verbose.writeflags( options, 'Options' );
@@ -103,7 +104,7 @@ module.exports = function ( grunt ) {
 		var output = [];
 		var compiled, templateName;
 		sys.each( this.data.files, function ( srcs, dest ) {
-			var srcFiles = grunt.file.expandFiles( srcs );
+			var srcFiles = grunt.file.expand( srcs );
 			sys.each( srcFiles, function ( file ) {
 				var src = grunt.file.read( file );
 				try {
@@ -117,7 +118,7 @@ module.exports = function ( grunt ) {
 					output.push( nsInfo.namespace + "[" + JSON.stringify( templateName ) + "] = " + compiled + ";" );
 				} catch ( e ) {
 					grunt.log.error( e );
-					grunt.fail.warn( "JST failed to compile." );
+					grunt.fail.warn( "file failed to compile." );
 				}
 			} );
 
@@ -134,12 +135,12 @@ module.exports = function ( grunt ) {
 					output.unshift( ["var _ = require('" + options.provider + "');"] );
 				}
 
-				if ( options.lintExpr ) {
+				if ( options.lintExpr && !sys.isEmpty(options.lintExpr) ) {
 					var lintlines = sys.map( options.lintExpr, function ( v, k ) {return k + ", " + v;} );
 					output.push( "\n/*jshint " + lintlines.join( " " ) + "  */" );
 				}
 
-				if (options.useStrict ) {
+				if ( options.useStrict ) {
 					output.unshift( '"use strict;"\n' );
 				}
 
