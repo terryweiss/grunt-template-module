@@ -129,6 +129,16 @@ module.exports = function ( grunt ) {
 				files : {
 					"tmp/ejs.js" : ["test/fixtures/template.html"]
 				}
+			},
+			ejsfilemodule : {
+				options : {
+					module : true,
+					provider : "ejs",
+					useStrict : false
+				},
+				files : {
+					"tmp/ejsmodule.js" : ["test/fixtures/template.html"]
+				}
 			}
 		},
 		//

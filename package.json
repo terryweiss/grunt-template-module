@@ -32,24 +32,26 @@
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies": {
-    "lodash": "~1.0.0",
-    "underscore": "~1.4.0",
-    "ejs": "~0.8.3",
-    "grunt-beautify": "~0.1.1",
-    "node-beautify": "~0.0.2"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-jshint": "~0.1.1"
-  },
   "keywords": [
     "gruntplugin",
+    "grunt",
+    "compile template",
     "jst",
     "ejs",
     "lodash",
     "underscore",
     "templates"
-  ]
+  ],
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "lodash": "^2.4.1",
+    "node-beautify": "0.0.2",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-beautify": "^0.1.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.0"
+  }
 }
