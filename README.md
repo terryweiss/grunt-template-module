@@ -178,7 +178,7 @@ template-module: {
 which would produce `/*jshint unused:false, asi:true, expr:true*/` and add it to the bottom of the file.
 
 #### amdWrapper
-Type: ```boolean```
+Type: ```boolean``` | ```string```
 Default: false
 
 With Require.js and a pre-compiled template.js you want the templates to be
@@ -196,6 +196,20 @@ Example:
 options: {
   amdWrapper: true
 }
+```
+
+If you want a specific define, you can provide it as string:
+``` javascript
+options: {
+  amdWrapper: 'define("templates", ["i18n"], function(__) {'
+}
+```
+Will result in:
+``` javascript
+define("templates", ["i18n"], function(__) {
+  //Templates
+  return this["NAMESPACE"];
+});
 ```
 
 * This is not used when module is set to true.*

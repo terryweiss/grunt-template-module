@@ -128,8 +128,8 @@ module.exports = function (grunt) {
                 }
 
                 if (options.amdWrapper) {
-
-                    output.unshift("define(function(){");
+                    var amdDefine = typeof options.amdWrapper==="string" ? options.amdWrapper : "define(function(){";
+                    output.unshift(amdDefine);
                     output.push("  return " + nsInfo.namespace + ";\n});");
                 } else if (options.module) {
                     output.unshift(["var _ = require('" + options.provider + "');"]);
