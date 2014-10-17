@@ -126,7 +126,7 @@ options: {
 Type: ```boolean```
 Default: false
 
-If enabled and there is only one soruce file, then export the template function as a single function. e.g. ```module.exports = function( .... );```
+If enabled and there is only one soruce file, then export the template as a single function. e.g. ```module.exports = function( .... );```
 
 ```javascript
 options: {
