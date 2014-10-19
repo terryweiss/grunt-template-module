@@ -64,6 +64,7 @@ module.exports = function ( grunt ) {
 				//				unused : false, asi : true, expr : true
 			},
 			module           : true,
+			requireProvider  : true,
 			provider         : "underscore",
 			processName      : function ( name ) {
 				return name;
@@ -93,6 +94,7 @@ module.exports = function ( grunt ) {
 			};
 		} else {
 			options.module = false;
+			options.requireProvider = false;
 			options.namespace = options.namespace || "JST";
 			nsInfo = getNamespaceDeclaration( options.namespace );
 		}
@@ -132,7 +134,7 @@ module.exports = function ( grunt ) {
 					var amdDefine = typeof options.amdWrapper === "string" ? options.amdWrapper : "define(function(){";
 					output.unshift( amdDefine );
 					output.push( "  return " + nsInfo.namespace + ";\n});" );
-				} else if ( options.module ) {
+				} else if ( options.requireProvider ) {
 					output.unshift( ["var _ = require('" + options.provider + "');"] );
 				}
 				if ( options.lintExpr && !sys.isEmpty( options.lintExpr ) ) {
