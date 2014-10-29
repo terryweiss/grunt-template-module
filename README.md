@@ -177,6 +177,14 @@ template-module: {
 
 which would produce `/*jshint unused:false, asi:true, expr:true*/` and add it to the bottom of the file.
 
+#### requireProvider
+Type: ```boolean```
+Default: true
+
+When compiling as with `module: true`, by default we'll prepend `var _ = require('underscore');` to the output. This is fine if you're bundling your `provider` (underscore, lodash, or ejs) in your build.
+
+However, you might not want to bundle your `provider`, for example if you want to load lodash from a CDN. In that case, you'll want to set `requireProvider: false`
+
 #### amdWrapper
 Type: ```boolean``` | ```string```
 Default: false
