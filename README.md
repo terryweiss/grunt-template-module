@@ -80,6 +80,17 @@ Default: underscore
 The name of the template engine to use. Allowable values are <code>*underscore*</code> <code>*lodash*</code> and <code>*ejs*</code>
 
 
+#### useStrict
+Type ```boolean```
+Default: false
+
+Enable strict mode by adding ```'strict mode';``` to the output
+
+```javascript
+options: {
+  useStrict: true
+}
+```
 
 #### prettify
 Type: ```boolean```
@@ -110,6 +121,19 @@ options: {
   }
 }
 ```
+
+#### single
+Type: ```boolean```
+Default: false
+
+If enabled and there is only one soruce file, then export the template as a single function. e.g. ```module.exports = function( .... );```
+
+```javascript
+options: {
+  single: true
+}
+```
+
 
 #### namespace
 Type: `String`

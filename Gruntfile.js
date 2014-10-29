@@ -139,7 +139,17 @@ module.exports = function ( grunt ) {
 				files : {
 					"tmp/ejsmodule.js" : ["test/fixtures/template.html"]
 				}
-			}
+			},
+			compile_single_module : {
+				files : {
+					"tmp/single_module_jst.js" : ["test/fixtures/template.html"]
+				},
+				options : {
+					module : true,
+					useStrict : false,
+					single: true
+				}
+			},
 		},
 		//
 		// Unit tests.

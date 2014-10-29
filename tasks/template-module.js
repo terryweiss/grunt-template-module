@@ -70,6 +70,7 @@ module.exports = function ( grunt ) {
 				return name;
 			},
 			useStrict        : false,
+			single 			 : false,
 			prettify         : false,
 			prettifyOptions  : {
 				indentSize : 2
@@ -101,6 +102,8 @@ module.exports = function ( grunt ) {
 
 		var output = [];
 		var compiled, templateName;
+		var oneSource = (this.files.length === 1);
+
 		this.files.forEach( function ( f ) {
 
 			sys.each( f.src, function ( srcFile ) {
@@ -118,8 +121,15 @@ module.exports = function ( grunt ) {
 						compiled = templateProvider.template( src, false, options.templateSettings ).source;
 					}
 
-					templateName = options.processName( srcFile );
-					output.push( nsInfo.namespace + "[" + JSON.stringify( templateName ) + "] = " + compiled + ";" );
+					if ( options.single === true && options.module === true && oneSource )
+					{
+						output.push( "module.exports = " + compiled + ";" );
+					}
+					else
+					{
+						templateName = options.processName( srcFile );
+						output.push( nsInfo.namespace + "[" + JSON.stringify( templateName ) + "] = " + compiled + ";" );
+					}
 				} catch ( e ) {
 					grunt.log.error( e );
 					grunt.fail.warn( "file failed to compile." );
