@@ -116,6 +116,7 @@ module.exports = function ( grunt ) {
 				var src = grunt.file.read( fpath );
 				try {
 					if ( options.provider === "ejs" ) {
+						options.templateSettings.filename = fpath;
 						compiled = templateProvider.compile( src, options.templateSettings );
 					} else {
 						compiled = templateProvider.template( src, false, options.templateSettings ).source;
