@@ -43,7 +43,7 @@
     "templates"
   ],
   "dependencies": {
-    "ejs": "~1.0.0",
+    "ejs": "~2.3.4",
     "lodash": "~2.4.1",
     "underscore": "~1.6.0",
     "node-beautify": "0.0.2"
