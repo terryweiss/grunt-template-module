@@ -124,12 +124,22 @@ module.exports = function ( grunt ) {
 
 					if ( options.single === true && options.module === true && oneSource )
 					{
-						output.push( "module.exports = " + compiled + ";" );
+						var expStr = "module.exports = ";
+						//Add banner line before if it exists
+						if(options.banner){
+							expStr = options.banner + "\n" + expStr;
+						}
+						output.push( expStr + compiled + ";" );
 					}
 					else
 					{
+						var expStr = nsInfo.namespace;
+						//Add banner line before if it exists
+						if(options.banner){
+							expStr = options.banner + "\n" + expStr;
+						}
 						templateName = options.processName( srcFile );
-						output.push( nsInfo.namespace + "[" + JSON.stringify( templateName ) + "] = " + compiled + ";" );
+						output.push( expStr + "[" + JSON.stringify( templateName ) + "] = " + compiled + ";" );
 					}
 				} catch ( e ) {
 					grunt.log.error( e );
